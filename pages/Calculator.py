@@ -1,16 +1,13 @@
 import streamlit as st
-import joblib
 import numpy as np
 import pandas as pd
 
-# load models with cache
-@st.cache_resource
-def load_model(model_location):
-    model = joblib.load(model_location)
-    return model
+from utils import load_model
 
 model = load_model('models/xgb_model.pkl')
 preprocessor = load_model('models/preprocessor.pkl')
+
+st.title("Goal Probablity Calculator")
 
 col1, col2 = st.columns(2)
 
